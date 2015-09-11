@@ -21,31 +21,88 @@
 
 class: center, middle
 
-# Functional Reactive Programming in Elm
+# An [Elm](http://elm-lang.org/) Teaser
+
+##### CSNW Annual Meeting 2015
+##### Colorado Springs, CO
 
 ---
 
-# Summary
+# Disclaimer
 
-1. I am not trying to say Elm > JavaScript, just that it is an interesting laboratory of ideas
-2. Long story short, it's kinda sorta like Haskell in the browser
-3. This little video should reveal that it is quite in the spirit touted by Bret Victor: https://www.youtube.com/watch?t=44&v=zybahE0aQqA
+I want to unambiguously convey that I am in no way lobbying for the use of Elm at CSNW in this talk. 
+
+My interest in the subject is purely for bettering myself as a developer.
 
 ---
 
-# Introduction
+# Motivation
 
-Some stuff about Elm you should know:
-- I am sure that this can all be created using an appropriate combination of JavaScript features and npm modules
-- Signal treatmant? https://baconjs.github.io/
-- Polymorphism? https://github.com/KrisJordan/multimethod-js
-- Object.freeze?
+My thoughts have been drifting around in this space in response to two other talks:
 
-<!--
-  Elm talk: 
-- http://debug.elm-lang.org/
--->
+- If you've been at CSNW long enough, you might recall a talk (at Woods Coffee, Bellingham?) that LC gave regarding his "long lost brother" [Bret Victor](http://worrydream.com/) and his inspiring interactive design ideas.
 
+- A talk I saw at OSCON by Jan Paul Posma about ["Visualizing Program Execution"](http://www.oscon.com/open-source-2015/public/schedule/detail/42069). A more useful search term there is probably "Omniscient Debugging".
+
+---
+
+# ["Time Traveling Debugger"](http://elm-lang.org/blog/time-travel-made-easy)
+
+<iframe width="750" height="450" src="https://www.youtube.com/embed/zybahE0aQqA" frameborder="0" allowfullscreen></iframe>
+
+---
+
+# Elm Summary
+
+- Long story made really short... it's "kinda sorta" like [Haskell](haskell.org) in the browser.
+
+- It's a playground of sorts for exploring [FRP](https://en.wikipedia.org/wiki/Functional_reactive_programming) (Functional Reactive Programming) principles in the browser.
+
+- I can't help but to be tempted to think that it might be [MVC "done right"](http://computationallyendowed.com/blog/2014/07/20/reactive-mvc.html), as it's the first system I've seen where it's super obvious that:
+
+  - The __Model__ is a truly __logicless__ data type that describes the entire state of the application, all in one place. While bits of state may be strewn about the application, the model is the authoritative record of state.
+  - The __View__ is just a function that maps a Model to a visual representation, e.g. View : (Model) -> Element
+
+  - The __Controller__ is just a function that maps an Event and a Model to a new Model, e.g. Controller : (Event, Model) -> Model
+
+---
+
+# Examples
+
+Perhaps some examples are the best way to (perhaps) build intrigue.
+
+[Complete List](http://elm-lang.org/examples)
+
+[Adventure](http://elm-lang.org/examples/adventure)
+
+---
+
+# Lifelong Learning
+
+I still have MUCH to learn, many mental analogies to form, and many dots to connect between the FRP approach and the imperative event-driven approach.
+
+I don't think the Model, Update, and View bits are (extremely) tricky to understand, but the functions in the [Signal module](http://package.elm-lang.org/packages/elm-lang/core/2.1.0/Signal) and their use is a bit more mind-bending for me still.
+
+I'm particularly interested in the symbiotic relationship of learning these client-side techniques and in learning server-side concurrency models with some similar functional semantics.
+
+Fwiw: there's an [elm-d3](https://github.com/seliopou/elm-d3) library out there.
+
+<!-- 
+
+# An Extended Side Challenge
+
+I'd like to propose a rhetorical and open challenge to the group to try to identify the tools they would reach for in order to create an "all JavaScript" system that provides similar capabilities to Elm.
+
+In my initial thoughts, I figured some of the ingredients would include:
+
+- Something to handle the signal abstractions: [`Bacon.js`](https://baconjs.github.io) among many others
+
+- Something to enforce immutability, but provide cloning in an efficient manner: ??? 
+
+- Something to mimic the type system as found in Elm: ???
+
+- Something to provide [polymorphism](https://en.wikipedia.org/wiki/Polymorphism) / [multiple dispatch](https://en.wikipedia.org/wiki/Multiple_dispatch) using [referentially transparent](https://en.wikipedia.org/wiki/Referential_transparency_(computer_science)) / [pure](https://en.wikipedia.org/wiki/Pure_function) functions: [`multimethods.js`](https://github.com/KrisJordan/multimethod-js)?
+ -->
     </textarea>
     <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
     </script>
