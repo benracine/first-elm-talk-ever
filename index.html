@@ -65,7 +65,7 @@ My thoughts have been drifting around in this space in response to two other tal
   - The __Model__ is a truly __logicless__ data type that describes the entire state of the application, all in one place. While bits of state may be strewn about the application, the model is the authoritative record of state.
   - The __View__ is just a function that maps a Model to a visual representation, e.g. View : (Model) -> Element
 
-  - The __Controller__ a.k.a. "Update" is just a function that maps a Signal and a Model to a new Model, e.g. Controller : (Signal, Model) -> Model
+  - The __Controller/Update__ is just a function that maps a Signal and a Model to a new Model, e.g. Update : (Signal, Model) -> Model
 
 ---
 
@@ -86,7 +86,7 @@ Progression:
 
 I still have MUCH to learn, many mental analogies to form, and many dots to connect between the FRP approach and the imperative event-driven approach.
 
-I don't think the Model, Update, and View bits are (extremely) tricky to understand, but the functions in the [Signal module](http://package.elm-lang.org/packages/elm-lang/core/2.1.0/Signal) and their use is a bit more mind-bending for me still.
+I don't think the Model, Update, and View bits are (extremely) tricky to understand, but getting used to thinking in [Signals](http://package.elm-lang.org/packages/elm-lang/core/2.1.0/Signal) vs. events takes some getting used to, and I'm still _really_ sure how I feel about the net pros and cons yet.
 
 I'm particularly interested in the symbiotic relationship of learning these client-side techniques and in learning server-side concurrency models with some similar functional semantics.
 
