@@ -26,35 +26,115 @@ class: center, middle
 ##### CSNW Annual Meeting 2015
 ##### Colorado Springs, CO
 
-The [repo](https://github.com/benracine/first-elm-talk-ever) for this presentation
+[Presentation Source Repo](https://github.com/benracine/first-elm-talk-ever)
 
 ---
 
 # Disclaimer
 
-I want to unambiguously convey that I am in no way lobbying for the use of Elm at CSNW in this talk. 
+I am __not lobbying__ for the use of Elm at CSNW in this talk. 
 
-My interest in the subject is purely for bettering myself as a developer.
+I've done __close to zero research__ regarding its production readiness.
 
----
+I expect there are important pieces missing from its ecosystem.
 
-# Motivation
-
-My thoughts have been drifting around in this space in response to two other talks:
-
-- If you've been at CSNW long enough, you might recall a talk (at Woods Coffee, Bellingham?) that LC gave regarding his "long lost brother" [Bret Victor](http://worrydream.com/) and his inspiring interactive design ideas.
-
-- A talk I saw at OSCON by Jan Paul Posma about ["Visualizing Program Execution"](http://www.oscon.com/open-source-2015/public/schedule/detail/42069). A more useful search term there is probably "Omniscient Debugging".
+I think its design gives rise to **very interesting development patterns**.
 
 ---
 
-# ["Time Traveling Debugger"](http://elm-lang.org/blog/time-travel-made-easy)
+# My Path to Elm
+
+My thoughts bounce around in this space in response to two other talks:
+
+- You _might_ recall a talk by LC regarding his "long lost brother", [Bret Victor](http://worrydream.com/), and his inspiring interactive design ideas.
+
+- A talk at OSCON by Jan Paul Posma about ["Visualizing Program Execution"](http://www.oscon.com/open-source-2015/public/schedule/detail/42069). Associated search term -> __"Omniscient Debugging"__.
+
+As I ruminate about the treatment of time, the [hot swapping of code](https://vimeo.com/86664303), maintainability, and ease of testing... I've felt a pull towards taking __immutable data__ and __pure stateless functions__ to their logical extremes.
+
+I see Elm as a useful tool for exploration in this direction.
+
+---
+
+# The "Time Traveling Debugger"
+
+An interesting tool reminiscent of Bret Victor's interactive ideal.
+
+Purity and immutability and their role in <a href="http://debug.elm-lang.org/" target="_blank">its implementation</a>.
+
+A useful <a href="http://elm-lang.org/blog/time-travel-made-easy" target="_blank">blog entry</a>, but this is probably best exhibited by example...
+
+---
+
+# Stamps
 
 <iframe width="750" height="450" src="https://www.youtube.com/embed/zybahE0aQqA" frameborder="0" allowfullscreen></iframe>
 
+<a href="http://debug.elm-lang.org/edit/Stamps.elm" target="_blank">Try it</a>
+
 ---
 
-# Elm Summary
+# Numbers
+
+<iframe width="750" height="450" src="https://www.youtube.com/embed/Z9IRkGwlLlM" frameborder="0" allowfullscreen></iframe>
+
+<a href="http://debug.elm-lang.org/edit/NumbersOnly.elm" target="_blank">Try it</a>
+
+---
+
+# Mario
+
+<iframe width="750" height="450" src="https://www.youtube.com/embed/RUeLd7T7Xi4" frameborder="0" allowfullscreen></iframe>
+
+<a href="http://debug.elm-lang.org/edit/Mario.elm" target="_blank">Try it</a>
+
+---
+
+# TodoMVC
+
+<iframe width="750" height="450" src="https://youtube.com/embed/2HK4ENBPcWA" frameborder="0" allowfullscreen></iframe>
+
+<a href="" target="_blank"></a>
+
+---
+
+# Tetris
+
+<iframe width="750" height="450" src="https://youtube.com/embed/IwOka_IXjU4" frameborder="0" allowfullscreen></iframe>
+
+<a href="" target="_blank"></a>
+
+---
+
+# Show Me the Code!
+
+[foldp](http://package.elm-lang.org/packages/elm-lang/core/2.1.0/Signal) ([simplest possible example](http://elm-lang.org/examples/mouse-clicks)) is (often) super central to understanding Elm code and appears in several examples:
+
+- [Adventure](http://elm-lang.org/examples/adventure): `Signal.foldp update hero input`
+- [Mario](http://elm-lang.org/examples/mario):         `Signal.foldp update mario input`
+- [Pong](http://elm-lang.org/examples/pong):           `Signal.foldp update defaultGame input`
+
+[Adventure](http://elm-lang.org/examples/adventure) is an example that I hope makes a reasonable entry point.
+
+A [complete list](http://elm-lang.org/examples) of examples.
+
+---
+
+# Lifelong Learning
+
+I still have MUCH to learn, symmetries to understand, mental analogies to form, and dots to connect between the [FRP](https://en.wikipedia.org/wiki/Functional_reactive_programming) approach and the imperative event-driven approach.
+
+I don't think the MVC bits are (extremely) tricky to understand, but thinking in [signals](http://package.elm-lang.org/packages/elm-lang/core/2.1.0/Signal) vs. events takes some getting used to, and I'm still _not really_ sure how I feel about the pros and cons yet.
+
+I'm intrigued by a possible symbiotic relationship between learning these client-side techniques and in learning server-side concurrency models with some shared functional semantics.
+
+---
+
+# Extra Slides
+
+---
+
+# Background Bits
 
 - Long story made really short... it's "kinda sorta" like [Haskell](haskell.org) in the browser.
 
@@ -63,32 +143,10 @@ My thoughts have been drifting around in this space in response to two other tal
 - I can't help but to be tempted to think that it might be [MVC "done right"](http://computationallyendowed.com/blog/2014/07/20/reactive-mvc.html), as it's the first system I've seen where it's super obvious that:
 
   - The __Model__ is a truly __logicless__ data type that describes the entire state of the application, all in one place. While bits of state may be strewn about the application, the model is the authoritative record of state.
+
   - The __View__ is just a function that maps a Model to a visual representation, e.g.  __`View : Model -> Element`__
 
   - The __Controller/Update__ is just a function that maps a Signal and a Model to a new Model, e.g.  __`Update: Signal -> Model -> Model`__
-
----
-
-# Examples
-
-Perhaps some examples are the best way to (perhaps) build intrigue.
-
-[Complete List](http://elm-lang.org/examples)
-
-Progression:
-
-- Explain a [foldp](http://package.elm-lang.org/packages/elm-lang/core/2.1.0/Signal) by [example](http://elm-lang.org/examples/mouse-clicks).
-- Dive into [Adventure](http://elm-lang.org/examples/adventure).
-
----
-
-# Lifelong Learning
-
-I still have MUCH to learn, many mental analogies to form, and many dots to connect between the FRP approach and the imperative event-driven approach.
-
-I don't think the Model, Update, and View bits are (extremely) tricky to understand, but getting used to thinking in [Signals](http://package.elm-lang.org/packages/elm-lang/core/2.1.0/Signal) vs. events takes some getting used to, and I'm still _really_ sure how I feel about the net pros and cons yet.
-
-I'm particularly interested in the symbiotic relationship of learning these client-side techniques and in learning server-side concurrency models with some similar functional semantics.
 
 ---
 
@@ -98,22 +156,6 @@ There's an [elm-d3](https://github.com/seliopou/elm-d3) library out there.
 
 I created a really silly [little toy](github.com/benracine/functional-purity-toy), just to play around with what "functional purity" looks like in JavaScript. I ended up chaining together some tiny pure functions using `_.chain`, which isn't too unlike what happens in the update function in the adventure example.
 
-<!-- 
-
-# An Extended Side Challenge
-
-I'd like to propose a rhetorical and open challenge to the group to try to identify the tools they would reach for in order to create an "all JavaScript" system that provides similar capabilities to Elm.
-
-In my initial thoughts, I figured some of the ingredients would include:
-
-- Something to handle the signal abstractions: [`Bacon.js`](https://baconjs.github.io) among many others
-
-- Something to enforce immutability, but provide cloning in an efficient manner: ??? 
-
-- Something to mimic the type system as found in Elm: ???
-
-- Something to provide [polymorphism](https://en.wikipedia.org/wiki/Polymorphism) / [multiple dispatch](https://en.wikipedia.org/wiki/Multiple_dispatch) using [referentially transparent](https://en.wikipedia.org/wiki/Referential_transparency_(computer_science)) / [pure](https://en.wikipedia.org/wiki/Pure_function) functions: [`multimethods.js`](https://github.com/KrisJordan/multimethod-js)?
- -->
     </textarea>
     <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
     </script>
