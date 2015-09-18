@@ -28,6 +28,12 @@ class: center, middle
 
 [Presentation Source Repo](https://github.com/benracine/first-elm-talk-ever)
 
+<br>
+<br>
+<br>
+
+<img src="./foldp2.png" height="220">
+
 ---
 
 # Disclaimer
@@ -36,9 +42,30 @@ I am __not lobbying__ for the use of Elm at CSNW in this talk.
 
 I've done __close to zero research__ regarding its production readiness.
 
-I expect there are important pieces missing from its ecosystem.
+I expect there are probably very important pieces missing from its ecosystem.
 
-I think its design gives rise to **very interesting development patterns**.
+<br>
+<br>
+
+But, I do think its design gives rise to interesting development patterns.
+
+---
+
+# Disclaimer (cont.)
+
+I'm just trying to better myself as a developer.
+
+Developer responses over at [Hammer Principle](http://hammerprinciple.com/therighttool) suggest this is a good place to do that, as it appears as #1 on the following lists:
+
+- "Learning this language *significantly changed* how I use other languages."
+
+- "Learning this language *improved my ability* as a programmer."
+
+- "I would recommend most programmers learn this language, *regardless of whether they have a specific need for it*."
+
+- "This language is likely to have a strong influence on future languages." (**well, #2) 
+
+- And the compliments [continue](http://hammerprinciple.com/therighttool/items/haskell).
 
 ---
 
@@ -46,7 +73,7 @@ I think its design gives rise to **very interesting development patterns**.
 
 My thoughts bounce around in this space in response to two other talks:
 
-- You _might_ recall a talk by LC regarding his "long lost brother", [Bret Victor](http://worrydream.com/), and his inspiring interactive design ideas.
+- You _might_ recall a talk by LC regarding his "long lost brother", [Bret Victor](http://worrydream.com/), and his inspiring ["Inventing on Principle"](https://vimeo.com/36579366) ideas.
 
 - A talk at OSCON by Jan Paul Posma about ["Visualizing Program Execution"](http://www.oscon.com/open-source-2015/public/schedule/detail/42069). Associated search term -> __"Omniscient Debugging"__.
 
@@ -82,7 +109,7 @@ A useful <a href="http://elm-lang.org/blog/time-travel-made-easy" target="_blank
 
 ---
 
-# Mario
+# Mario (skip)
 
 <iframe width="750" height="450" src="https://www.youtube.com/embed/RUeLd7T7Xi4" frameborder="0" allowfullscreen></iframe>
 
@@ -90,7 +117,7 @@ A useful <a href="http://elm-lang.org/blog/time-travel-made-easy" target="_blank
 
 ---
 
-# TodoMVC
+# TodoMVC (skip)
 
 <iframe width="750" height="450" src="https://youtube.com/embed/2HK4ENBPcWA" frameborder="0" allowfullscreen></iframe>
 
@@ -98,7 +125,7 @@ A useful <a href="http://elm-lang.org/blog/time-travel-made-easy" target="_blank
 
 ---
 
-# Tetris
+# Tetris (skip)
 
 <iframe width="750" height="450" src="https://youtube.com/embed/IwOka_IXjU4" frameborder="0" allowfullscreen></iframe>
 
@@ -106,7 +133,7 @@ A useful <a href="http://elm-lang.org/blog/time-travel-made-easy" target="_blank
 
 ---
 
-# Show Me the Code!
+# Show Me Some Code!
 
 [foldp](http://package.elm-lang.org/packages/elm-lang/core/2.1.0/Signal) ([simplest possible example](http://elm-lang.org/examples/mouse-clicks)) is (often) super central to understanding Elm code and appears in several examples:
 
@@ -114,43 +141,86 @@ A useful <a href="http://elm-lang.org/blog/time-travel-made-easy" target="_blank
 - [Mario](http://elm-lang.org/examples/mario):         `Signal.foldp update mario input`
 - [Pong](http://elm-lang.org/examples/pong):           `Signal.foldp update defaultGame input`
 
-[Adventure](http://elm-lang.org/examples/adventure) is an example that I hope makes a reasonable entry point.
+<br>
+<img height="270" src="./foldp.png">
+
+<img src="">
+
+---
+
+# Show Me Some Code!
+
+In the pong example, you will see:
+
+- A clean circular flow from Signals -> update -> Model -> view -> Signals -> update -> ...
+
+- The fact that Signals and the Model are data abstractions that interact with each with other via unidirectional stateless update and view functions.
+
+A lack of encapsulation is admittedly surprising, but it does make me ponder... is it better to have encapsulation and have to ripple truth throughout the system or to not, and to have one and only one location for truth?
+
+[Pong](http://elm-lang.org/examples/pong) is an example that I hope makes a reasonable [entry point](http://elm-lang.org/blog/making-pong).
 
 A [complete list](http://elm-lang.org/examples) of examples.
 
 ---
 
-# Lifelong Learning
+# Lifelong Learning (time still?)
 
 I still have MUCH to learn, symmetries to understand, mental analogies to form, and dots to connect between the [FRP](https://en.wikipedia.org/wiki/Functional_reactive_programming) approach and the imperative event-driven approach.
 
-I don't think the MVC bits are (extremely) tricky to understand, but thinking in [signals](http://package.elm-lang.org/packages/elm-lang/core/2.1.0/Signal) vs. events takes some getting used to, and I'm still _not really_ sure how I feel about the pros and cons yet.
+I don't think the MVC bits are (extremely) tricky to understand, but thinking in event-streams / [signals](http://package.elm-lang.org/packages/elm-lang/core/2.1.0/Signal) instead of individual events take some getting used to.
 
 I'm intrigued by a possible symbiotic relationship between learning these client-side techniques and in learning server-side concurrency models with some shared functional semantics.
 
 ---
 
-# Extra Slides
+# An All-JavaScript System? (time still?)
+
+How feasible is an all-JavaScript system with similar features?
+
+- Pure stateless functions are possible now.
+ 
+- Tail-call optimization exists in ES6.
+ 
+- Does [immutable.js](https://github.com/facebook/immutable-js/) provide sufficient immutable data structures?
+ 
+- Could [bacon.js](https://baconjs.github.io) (or similar) provide sufficient signal abstractions?
+
+- Do the type abstractions map over?
 
 ---
 
-# Background Bits
+# TodoMVC (time still?)
+
+The [TodoMVC project](todomvc.com) is a popular means of comparing JavaScript UI frameworks.
+
+I'm happy to dive in if we have time, but I'm not **quite** grokking the whole Mailbox and address thing shown therein.
+
+The [Elm Code](https://github.com/evancz/elm-todomvc/blob/master/Todo.elm).
+
+[The Elm Demo](http://evancz.github.io/elm-todomvc/).
+
+<img height="300" src="signal-graph-summary.png">
+
+---
+
+# Background Bits (skip)
 
 - Long story made really short... it's "kinda sorta" like [Haskell](haskell.org) in the browser.
 
 - It's a playground of sorts for exploring [FRP](https://en.wikipedia.org/wiki/Functional_reactive_programming) (Functional Reactive Programming) principles in the browser.
 
-- I can't help but to be tempted to think that it might be [MVC "done right"](http://computationallyendowed.com/blog/2014/07/20/reactive-mvc.html), as it's the first system I've seen where it's super obvious that:
+- It kind of feels like [MVC "done right"](http://computationallyendowed.com/blog/2014/07/20/reactive-mvc.html), as it's the first system I've seen where it's super obvious that:
 
   - The __Model__ is a truly __logicless__ data type that describes the entire state of the application, all in one place. While bits of state may be strewn about the application, the model is the authoritative record of state.
 
-  - The __View__ is just a function that maps a Model to a visual representation, e.g.  __`View : Model -> Element`__
+  - The __View__ is just a function that maps a Model to a visual representation, e.g.  __`View : Model -> Html`__
 
-  - The __Controller/Update__ is just a function that maps a Signal and a Model to a new Model, e.g.  __`Update: Signal -> Model -> Model`__
+  - The __Controller/Update__ is just a function that maps a Signal and a Model to a new Model, e.g.  __`update: Action -> Model -> Model`__
 
 ---
 
-# Almost Random
+# Almost Random (skip)
 
 There's an [elm-d3](https://github.com/seliopou/elm-d3) library out there.
 
